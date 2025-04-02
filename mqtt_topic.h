@@ -14,6 +14,8 @@ String topicStr6;
 const char* topic6;
 String topicStr7;
 const char* topic7;
+String topicStr8;
+const char* topic8;
 String mqttClientId1;
 const char* mqttClientId;
 
@@ -35,4 +37,6 @@ void mqtt_topics()
   topic6 = topicStr6.c_str();
   topicStr7 = "onwords/" + PId + "/gatePosition";
   topic7 = topicStr7.c_str();
+  topicStr8 = "onwords/" + PId + "/pid";
+  topic8 = topicStr8.c_str();
 }

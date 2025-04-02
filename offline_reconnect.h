@@ -78,6 +78,7 @@ void reconnect()
           client.subscribe(topic2, subscribeQoS);
           client.subscribe(topic5, subscribeQoS);
           client.subscribe(topic6, subscribeQoS);
+          client.subscribe(topic8, subscribeQoS);
           client.publish(topic3, hardware_current_Status, false);
           client.publish(topic4, hardware_productid);
           client.publish(topic5, softreset_status);

@@ -40,6 +40,16 @@ String readPid() {
   return Pid;
 }
 
+void writePid(const String &Pid) {
+  int addr = PID_ADDR;  
+  int len = Pid.length();
+  for (int i = 0; i < len; i++) {
+    EEPROM.write(addr + i, Pid[i]);
+  }
+  EEPROM.write(addr + len, 0);
+  EEPROM.commit();  
+}
+
 void writestring(String data) {
   int separatorIndex = data.indexOf(':');
   if (separatorIndex != -1) {

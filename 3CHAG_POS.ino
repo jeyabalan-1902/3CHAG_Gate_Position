@@ -7,7 +7,6 @@
 #include <Update.h>
 #include <PubSubClient.h>
 
-#include"print.h"
 #include"mqtt_topic.h"
 #include"initial_function.h"
 #include"firmware.h"

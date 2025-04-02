@@ -14,6 +14,7 @@ extern String current_status;
 extern char gate_status[200];
 
 extern void Gate_position();
+extern void writePid(const String &Pid);
 
 WiFiServer server(8182);
 WiFiClient espClient;
@@ -81,6 +82,18 @@ void callback(char* topic, byte * payload, unsigned int length) {
     store = "doubleGate";
     currentstatus(store);
   }
+  
+  if (doc.containsKey("PID")) {
+    const char* pid = doc["PID"];
+    Serial.println("Extracted PID: " + String(pid));
+
+    writePid(pid);
+    //Serial.println("PID stored in EEPROM!");
+
+    delay(2000);  // Ensure stability before restart
+    ESP.restart(); 
+  }
+
   String response = doc["request"];
   Serial.println(response);
 
