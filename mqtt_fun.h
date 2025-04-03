@@ -55,6 +55,12 @@ void callback(char* topic, byte * payload, unsigned int length) {
   int firmware_sts = doc["firmware_sts"];
   if (firmware_sts == 1)
   {
+    StaticJsonDocument<200> jsonDoc;
+    jsonDoc["action"] = "Firmware Update";
+    char jsonBuffer[200];
+    serializeJson(jsonDoc, jsonBuffer);
+    client.publish(topic6, jsonBuffer);
+    delay(2000);
     String firmwareUrl = doc["firmwareUrl"];
     frimware_update(firmwareUrl);
   }
@@ -88,7 +94,12 @@ void callback(char* topic, byte * payload, unsigned int length) {
     Serial.println("Extracted PID: " + String(pid));
 
     writePid(pid);
-    //Serial.println("PID stored in EEPROM!");
+    StaticJsonDocument<200> jsonDoc;
+    jsonDoc["action"] = "PID";
+    char jsonBuffer[200];
+    serializeJson(jsonDoc, jsonBuffer);
+    client.publish(topic8, jsonBuffer);
+    Serial.println("PID stored in EEPROM!");
 
     delay(2000);  // Ensure stability before restart
     ESP.restart(); 
