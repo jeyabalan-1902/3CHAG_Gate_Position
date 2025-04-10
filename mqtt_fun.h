@@ -110,14 +110,14 @@ void callback(char* topic, byte * payload, unsigned int length) {
 
   if (response == "getCurrentStatus")
   {
-    String stored_status = readEEPROM(EEPROM_STATUS_ADDR, 10);
-    if(stored_status == "OPEN" || stored_status == "CLOSE")
-    {
-      StaticJsonDocument<2000> gate;
-      gate["status"] = current_status;
-      serializeJson(gate, gate_status);
-      client.publish(topic7, gate_status);
-    }
+    //String stored_status = readEEPROM(EEPROM_STATUS_ADDR, 10);
+    // if(stored_status == "OPEN" || stored_status == "CLOSE")
+    // {
+    //   StaticJsonDocument<2000> gate;
+    //   gate["status"] = current_status;
+    //   serializeJson(gate, gate_status);
+    //   client.publish(topic7, gate_status);
+    // }
 
     StaticJsonDocument<2000> doc;
     doc["action"] = store;

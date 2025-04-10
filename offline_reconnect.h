@@ -1,3 +1,5 @@
+extern void Gate_position();
+
 void listen_for_hardreset()
 {
   int buttonState = digitalRead(resetPin);
@@ -83,6 +85,7 @@ void reconnect()
           client.publish(topic4, hardware_productid);
           client.publish(topic5, softreset_status);
           digitalWrite(led, HIGH);
+          //Gate_position();
          // p("MQTT connected.........");
         } else {
          // p("MQTT connection attempt failed, will retry in 5 seconds...");
